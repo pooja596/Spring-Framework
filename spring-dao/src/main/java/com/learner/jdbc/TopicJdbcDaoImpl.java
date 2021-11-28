@@ -15,7 +15,7 @@ public class TopicJdbcDaoImpl {
 
 		jdbcTemplate.update(sql);
 
-		System.out.println("Topic inserted successfully!!!!");
+		System.out.println("Topic inserted successfully using JdbcTemplate!!!!");
 
 	}
 
