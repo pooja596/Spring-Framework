@@ -18,6 +18,12 @@ public class Circle {
 		this.name = name;
 	}
 
+	public String setNameAndReturn(String name) {
+		System.out.println("Inside Circle.setName()!!!");
+		this.name = name;
+		return name;
+	}
+
 	public int getRadious() {
 		System.out.println("Inside Circle.getRadious()!!!");
 		return radious;
@@ -26,6 +32,17 @@ public class Circle {
 	public void setRadious(int radious) {
 		System.out.println("Inside Circle.setRadious()!!!");
 		this.radious = radious;
+	}
+
+	public void setRadiousAndThrowException(int radious) {
+		System.out.println("Inside Circle.setRadious()!!!");
+		this.radious = radious;
+		throw new RuntimeException();
+	}
+
+	@Override
+	public String toString() {
+		return "Circle [name=" + name + ", radious=" + radious + "]";
 	}
 
 }
