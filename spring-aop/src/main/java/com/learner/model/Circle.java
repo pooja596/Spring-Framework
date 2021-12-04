@@ -14,6 +14,7 @@ public class Circle {
 	}
 
 	public void setName(String name) {
+		System.out.println("Inside Circle.setName()!!!");
 		this.name = name;
 	}
 
@@ -23,6 +24,7 @@ public class Circle {
 	}
 
 	public void setRadious(int radious) {
+		System.out.println("Inside Circle.setRadious()!!!");
 		this.radious = radious;
 	}
 

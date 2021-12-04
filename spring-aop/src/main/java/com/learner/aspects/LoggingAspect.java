@@ -13,6 +13,11 @@ public class LoggingAspect {
 	public void loggingAdvice() {
 		System.out.println("Logging advice run. Get method called");
 	}
+	
+	@Before("allCircleMethods()")
+	public void secondloggingAdvice() {
+		System.out.println("Logging advice 2 run.");
+	}
 
 	/*
 	 * Below point cut will be applied on all methods of Circle class inside
@@ -23,5 +28,10 @@ public class LoggingAspect {
 	@Pointcut("execution(public * com.learner.model.Circle.get*())")
 	public void allGettersInBasePackage() {
 	}
+	
+	@Pointcut("within(com.learner.model..*)")
+	public void allCircleMethods() {
+	}
+	
 
 }
