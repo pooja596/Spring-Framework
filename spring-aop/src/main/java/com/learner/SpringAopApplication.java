@@ -21,6 +21,7 @@ public class SpringAopApplication implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 		
 		System.out.println(circle.getName());
+		System.out.println(circle.getRadious());
 	}
 
 }
