@@ -1,9 +1,11 @@
 package com.learner.aspects;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -41,6 +43,20 @@ public class LoggingAspect {
 	@AfterThrowing(pointcut = "execution(public * com.learner.model.Circle.setRadiousAndThrowException(..))" , throwing = "exception")
 	public void exceptionAdvice(Exception exception) {
 		System.out.println("exceptionAdvice run. " + exception);
+	}
+	
+	@Around(value = "execution(public * com.learner.model.Circle.setName(..))")
+	public void aroundAdvice(ProceedingJoinPoint proceedingJoinPoint) {
+
+		try {
+			System.out.println("aroundAdvice before proceedingJoinPoint.proceed(). ");
+			proceedingJoinPoint.proceed();
+			System.out.println("aroundAdvice after proceedingJoinPoint.proceed(). ");
+		} catch (Throwable e) {
+			System.out.println("After throwing aroundAdvice");
+		}
+
+		System.out.println("After Finally");
 	}
 	
 	/*

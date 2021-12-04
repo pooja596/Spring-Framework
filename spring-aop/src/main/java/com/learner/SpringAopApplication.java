@@ -19,9 +19,9 @@ public class SpringAopApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-//		circle.setName("circleName");
-		circle.setNameAndReturn("Dummy name");
-		circle.setRadiousAndThrowException(10);
+		circle.setName("circleName");
+//		circle.setNameAndReturn("Dummy name");
+//		circle.setRadiousAndThrowException(10);
 //		System.out.println(circle.getName());
 //		System.out.println(circle.getRadious());
 	}
