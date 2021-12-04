@@ -45,7 +45,7 @@ public class LoggingAspect {
 		System.out.println("exceptionAdvice run. " + exception);
 	}
 	
-	@Around(value = "execution(public * com.learner.model.Circle.setName(..))")
+	@Around("@annotation(com.learner.aspects.Loggable)")
 	public void aroundAdvice(ProceedingJoinPoint proceedingJoinPoint) {
 
 		try {
@@ -58,7 +58,7 @@ public class LoggingAspect {
 
 		System.out.println("After Finally");
 	}
-	
+		
 	/*
 	 * Below point cut will be applied on all methods of Circle class inside
 	 * com.learner.model package having name starting with 'get' 

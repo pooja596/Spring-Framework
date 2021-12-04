@@ -2,6 +2,8 @@ package com.learner.model;
 
 import org.springframework.stereotype.Component;
 
+import com.learner.aspects.Loggable;
+
 @Component
 public class Circle {
 
@@ -13,6 +15,7 @@ public class Circle {
 		return name;
 	}
 
+	@Loggable
 	public void setName(String name) {
 		System.out.println("Inside Circle.setName()!!!");
 		this.name = name;
