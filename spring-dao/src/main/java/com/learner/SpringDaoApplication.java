@@ -39,6 +39,10 @@ public class SpringDaoApplication implements CommandLineRunner{
 		topicCoreJdbcDaoImpl.insert();
 		System.out.println("TopicCoreJdbcDaoImpl.insert() end!!");	
 		
+		System.out.println("TopicCoreJdbcDaoImpl.insertByUsingDataSource() start!!");
+		topicCoreJdbcDaoImpl.insertByUsingDataSource();
+		System.out.println("TopicCoreJdbcDaoImpl.insertByUsingDataSource() end!!");	
+		
 	}
 
 }
