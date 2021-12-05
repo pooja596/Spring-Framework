@@ -2,6 +2,7 @@ package com.learner.jdbc;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,13 +60,24 @@ public class TopicJdbcDaoImpl {
 		return topicList;
 
 	}
+	
+	public int insertTopic(Topic topic) {
+
+		String sql = "insert into topic(Id,Name,Description) values (?, ?, ?) ";
+
+		int insertedRecord = jdbcTemplate.update(sql,
+				new Object[] { topic.getId(), topic.getName(), topic.getDescription() },
+				new int[] { Types.INTEGER, Types.VARCHAR, Types.VARCHAR });
+
+		return insertedRecord;
+	}
 
 	private static final class TopicRowMapper implements RowMapper<Topic> {
 
 		@Override
 		public Topic mapRow(ResultSet rs, int rowNum) throws SQLException {
 			Topic topic = new Topic();
-			topic.setId(rs.getInt("ID"));
+			topic.setId(rs.getInt("Id"));
 			topic.setName(rs.getString("Name"));
 			topic.setDescription(rs.getString("Description"));
 
