@@ -75,6 +75,11 @@ public class SpringDaoApplication implements CommandLineRunner {
 		System.out.println(topicJdbcDaoImpl.insertTopic(topic));
 		System.out.println("topicJdbcDaoImpl.insertTopic() end!!");
 
+		System.out.println("topicJdbcDaoImpl.insertTopicUsingNamedParameterJdbcTemplate() start!!");
+		Topic topic2 = new Topic(11, "NamedParameterJdbcTemplate ", "NamedParameterJdbcTemplate Desc");
+		System.out.println(topicJdbcDaoImpl.insertTopicUsingNamedParameterJdbcTemplate(topic2));
+		System.out.println("topicJdbcDaoImpl.insertTopicUsingNamedParameterJdbcTemplate() end!!");
+
 	}
 
 }

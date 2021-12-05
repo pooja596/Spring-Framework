@@ -8,6 +8,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
 import com.learner.entity.Topic;
@@ -18,6 +21,9 @@ public class TopicJdbcDaoImpl {
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 
+	@Autowired
+	NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+	
 	public void insert() {
 		String sql = "insert into topic values(1, 'Java-Basic', 'Core java')";
 
@@ -60,7 +66,7 @@ public class TopicJdbcDaoImpl {
 		return topicList;
 
 	}
-	
+
 	public int insertTopic(Topic topic) {
 
 		String sql = "insert into topic(Id,Name,Description) values (?, ?, ?) ";
@@ -68,6 +74,18 @@ public class TopicJdbcDaoImpl {
 		int insertedRecord = jdbcTemplate.update(sql,
 				new Object[] { topic.getId(), topic.getName(), topic.getDescription() },
 				new int[] { Types.INTEGER, Types.VARCHAR, Types.VARCHAR });
+
+		return insertedRecord;
+	}
+
+	public int insertTopicUsingNamedParameterJdbcTemplate(Topic topic) {
+
+		String sql = "insert into topic(Id,Name,Description) values (:id, :name, :descriptor) ";
+
+		SqlParameterSource sqlParameterSource = new MapSqlParameterSource().addValue("id", topic.getId())
+				.addValue("name", topic.getName()).addValue("descriptor", topic.getDescription());
+
+		int insertedRecord = namedParameterJdbcTemplate.update(sql, sqlParameterSource);
 
 		return insertedRecord;
 	}
