@@ -9,6 +9,7 @@ import com.learner.core.jdbc.TopicCoreJdbcDaoImpl;
 import com.learner.entity.Topic;
 import com.learner.jdbc.TopicJdbcDaoImpl;
 import com.learner.jpa.TopicJpaDaoImpl;
+import com.learner.jpa.TopicRepository;
 import com.learner.orm.TopicHibernateDaoImpl;
 
 @SpringBootApplication
@@ -25,6 +26,9 @@ public class SpringDaoApplication implements CommandLineRunner {
 	
 	@Autowired
 	TopicHibernateDaoImpl topicHibernateDaoImpl;
+	
+	@Autowired
+	TopicRepository topicRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringDaoApplication.class, args);
@@ -88,6 +92,11 @@ public class SpringDaoApplication implements CommandLineRunner {
 		System.out.println("topicHibernateDaoImpl.getCount() start!!");
 		System.out.println(topicHibernateDaoImpl.getCount());
 		System.out.println("topicHibernateDaoImpl.getCount() end!!");
+		
+
+		System.out.println("topicRepository.findById() start!!");
+		System.out.println(topicRepository.findById(1));
+		System.out.println("topicRepository.findById() end!!");
 		
 	}
 
